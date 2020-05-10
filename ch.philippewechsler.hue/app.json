@@ -53,6 +53,34 @@
       },
       {
         "title": {
+          "en": "Set Group Relative Saturation"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "group",
+            "placeholder": {
+              "en": "Search for groups..."
+            }
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement",
+            "placeholder": {
+              "en": "relative saturation increasement"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_group_relative_saturation"
+      },
+      {
+        "title": {
           "en": "Set Light Relative Brightness"
         },
         "args": [
@@ -78,6 +106,34 @@
           }
         ],
         "id": "set_light_relative_brightness"
+      },
+      {
+        "title": {
+          "en": "Set Light Relative Saturation"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "light",
+            "placeholder": {
+              "en": "Search for lights..."
+            }
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement",
+            "placeholder": {
+              "en": "relative saturation increasement"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_light_relative_saturation"
       }
     ]
   }
