@@ -1,7 +1,7 @@
 {
   "id": "ch.philippewechsler.hue",
   "version": "1.0.0",
-  "compatibility": ">=1.5.0",
+  "compatibility": ">=4.0.0",
   "sdk": 2,
   "name": {
     "en": "Philips Hue Extensions"
@@ -20,5 +20,37 @@
   "author": {
     "name": "Philippe Wechsler",
     "email": "myself@philippewechsler.ch"
+  },
+  "flow": {
+    "actions": [
+      {
+        "title": {
+          "en": "Set Group Relative Brightness"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "group",
+            "placeholder": {
+              "en": "Search for groups..."
+            }
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement",
+            "placeholder": {
+              "en": "relative brightness increasement"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 2
+          }
+        ],
+        "id": "set_group_relative_brightness"
+      }
+    ]
   }
 }

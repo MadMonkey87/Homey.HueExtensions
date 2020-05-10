@@ -104,7 +104,7 @@
                         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
                             const response = JSON.parse(xhr.responseText)
 
-                            if(response.success != null){
+                            if(response[0].success != null){
                                 callback(null, response[0].success.username)
                             } else {
                                 callback(new Error('please press the button on your Philips Hue Bridge and then click again on "Discover & Authenticate"'))
