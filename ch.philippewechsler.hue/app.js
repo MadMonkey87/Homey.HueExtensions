@@ -26,8 +26,7 @@ class HueExtensionsApp extends Homey.App {
 			.registerRunListener(async ( args, state ) => {
 				const groupState = { bri_inc : Math.round(args.relative_increasement * 254) };
 				return new Promise((resolve) => {
-					this.setGroupState(args.group.id, groupState,(error, result) => {
-						console.log(JSON.stringify(error));
+					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
 							return this.error(error);
 						}
@@ -51,7 +50,39 @@ class HueExtensionsApp extends Homey.App {
 						resolve(result);
 					})
 				});
-			})
+			});
+
+			let setLightRelativeBrightnessAction = new Homey.FlowCardAction('set_light_relative_brightness');
+			setLightRelativeBrightnessAction
+				.register()
+				.registerRunListener(async ( args, state ) => {
+					const lightState = { bri_inc : Math.round(args.relative_increasement * 254) };
+					return new Promise((resolve) => {
+						this.setLightState(args.light.id, lightState, (error, result) => {
+							if (error) {
+								return this.error(error);
+							}
+							resolve(true);
+						})
+					});
+				})
+				.getArgument('light')
+				.registerAutocompleteListener(( query, args ) => {
+					return new Promise((resolve) => {
+						this.getLightsList((error, groups) => {
+							if (error) {
+								return this.error(error);
+							}
+							let result = [];
+							Object.entries(groups).forEach(entry => {
+								const key = entry[0];
+								const light = entry[1];
+								result.push({name: light.name,id: key});
+							});
+							resolve(result);
+						})
+					});
+				});
 	}
 
 	getLightState(device, callback) {
@@ -86,6 +117,12 @@ class HueExtensionsApp extends Homey.App {
 
 	setGroupState(groupId, state, callback){
 		http.put(this.host, this.port, `/api/${this.apikey}/groups/${groupId}/action`, state, (error, response) => {
+			callback(error, !!error ? null : JSON.parse(response))
+		})
+	}
+
+	setLightState(lightId, state, callback){
+		http.put(this.host, this.port, `/api/${this.apikey}/lights/${lightId}/state`, state, (error, response) => {
 			callback(error, !!error ? null : JSON.parse(response))
 		})
 	}
