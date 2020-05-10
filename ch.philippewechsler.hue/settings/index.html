@@ -1,0 +1,202 @@
+<html>
+	<head>
+        <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+	</head>
+	<body>
+        <h1>Connection Settings</h1>
+		<fieldset>
+            <div class="container">
+                <div class="alert alert-danger" role="alert" id="apiError" style="display: none">
+                    <div class="ApiErrorShow">Error!</div>
+                </div>
+                <div class="row col-9">
+                    <div class="col-sm mt-4">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" style="height: 35" id="discoverButton">Discover & Authenticate</button>
+                        </div>
+                    </div>
+                    <div class="col-sm mt-4">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-outline-secondary" style="height: 35" id="advancedSettingsButton">Show Advanced</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-9" class="collapse" id="advancedsettings" style="display: none;">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label>IP</label>
+                            <input type="text" class="form-control" id="bridgeIPAdress" placeholder="xxx.xxx.xxx.xxx">
+                            <small id="ipHelp" class="form-text text-muted">IP address of the Philips Hue Bridge</small>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label>API key</label>
+                            <input type="text" class="form-control" id="apiKey">
+                            <small id="ipHelp" class="form-text text-muted">The key used to authenticate against the Philips Hue bridge</small>
+                        </div>
+                    </div>
+                    <div class="row col-9">
+                        <div class="col-sm mt-4">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" style="height: 35" id="createButton">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</fieldset>
+
+        <script type="text/javascript">
+            //document.addEventListener("DOMContentLoaded", function(event) { 
+            function onHomeyReady(Homey) {
+                const ip = document.getElementById('bridgeIPAdress')
+                const apiKey = document.getElementById('apiKey')
+                const saveButton = document.getElementById('createButton')
+                const discoverButton = document.getElementById('discoverButton')
+                const advancedSettingsButton = document.getElementById('advancedSettingsButton')
+                const advancedsettings = document.getElementById('advancedsettings')
+                const apiError = document.getElementById('apiError')
+                const title = document.getElementsByClassName('ApiErrorShow')[0]
+                
+                function discover(callback) {
+                    apiError.style.display = 'grid'
+                    apiError.classList.remove('alert-danger')
+                    apiError.classList.add('alert-success')
+                    title.innerHTML = 'Autodiscovering...'
+                    const url = 'https://discovery.meethue.com'
+                    const xhr = new XMLHttpRequest()
+                    xhr.onreadystatechange = function (e) {
+                        if (xhr.readyState == 4 && xhr.status == 200) {
+                            const response = JSON.parse(xhr.responseText)[0]
+                            if (Object.keys(response).length === 0) {
+                                apiError.style.display = 'grid'
+                                apiError.classList.remove('alert-success')
+                                apiError.classList.add('alert-danger')
+                                apiKey.value = ''
+                                title.innerHTML = "Can't autodiscover Philips Hue Bridge on your network"
+                                callback(new Error('Empty array in response'))
+                            } else {
+                                apiError.style.display = 'grid'
+                                apiError.classList.remove('alert-danger')
+                                apiError.classList.add('alert-success')
+                                title.innerHTML = 'Successfully autodiscovered gateway'
+                                callback(null, {
+                                    ip: response.internalipaddress
+                                })
+                            }
+                        }
+                    }
+                    xhr.open('GET', url, true)
+                    xhr.send()
+                }
+
+                function getAPIkey(callback) {
+                    const url = `http://${ip.value}/api`
+                    const data = JSON.stringify({
+                        "devicetype": "Homey Hue Extensions"
+                    })
+                    const xhr = new XMLHttpRequest()
+                    xhr.open('POST', url, true)
+                    xhr.setRequestHeader('Content-Type', 'application/json')
+                    xhr.onreadystatechange = function() {
+                        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                            const response = JSON.parse(xhr.responseText)
+
+                            if(response.success != null){
+                                callback(null, response[0].success.username)
+                            } else {
+                                callback(new Error('please press the button on your Philips Hue Bridge and then click again on "Discover & Authenticate"'))
+                            }
+                        }else{
+                            const response = JSON.parse(xhr.responseText)
+                            callback(new Error(response[0].error.description), null)
+                        }
+                    }
+                    xhr.send(data)
+                }
+
+                advancedSettingsButton.addEventListener('click', (e) => {
+                    if (advancedsettings.style.display === "none") {
+                        advancedsettings.style.display = "block";
+                        advancedSettingsButton.innerHTML = 'Hide Advanced'
+                    } else {
+                        advancedsettings.style.display = "none";
+                        advancedSettingsButton.innerHTML = 'Show Advanced'
+                    }
+                })
+
+                saveButton.addEventListener('click', (e) => {
+                    if (!ip.value) {
+                        apiError.style.display = 'grid'
+                        apiError.classList.remove('alert-success')
+                        apiError.classList.add('alert-danger')
+                        title.innerHTML = 'Enter IP address'
+                    } else if (!apiKey.value) {
+                        apiError.style.display = 'grid'
+                        apiError.classList.remove('alert-success')
+                        apiError.classList.add('alert-danger')
+                        title.innerHTML = 'Enter api key'
+                    } else {
+                        saveAll()
+                        apiError.style.display = 'grid'
+                        apiError.classList.remove('alert-danger')
+                        apiError.classList.add('alert-success')
+                        title.innerHTML = 'Successfuly saved!'
+                        Homey.alert(`succesfully saved`)
+                    }
+                })
+                
+                discoverButton.addEventListener('click', (e) => {
+                    ip.value = ''
+                    apiKey.value = ''
+                    discover((error, data) => {
+                        ip.value = data.ip
+                            getAPIkey(function(error, success) {
+                                if (!!error) {
+                                    apiError.style.display = 'grid'
+                                    apiError.classList.remove('alert-success')
+                                    apiError.classList.add('alert-danger')
+                                    title.innerHTML = error.message
+                                    return
+                                }
+                                apiKey.value = success;
+                                saveAll()
+
+                                apiError.style.display = 'grid'
+                                apiError.classList.remove('alert-danger')
+                                apiError.classList.add('alert-success')
+                                title.innerHTML = 'Successfuly initialized and saved!'
+                                Homey.alert(`succesfully saved`)
+                            })
+                    })
+                })
+                
+                function saveAll() {
+                    Homey.set('host', ip.value, (err, settings) => {
+                        if (err) return Homey.alert(err)
+                    })
+                    Homey.set('apikey', apiKey.value, (err, settings) => {
+                        if (err) return Homey.alert(err)
+                    })
+                }
+
+                Homey.get('host', (err, host) => {
+                    if (err) return Homey.alert(err)
+                    ip.value = host
+                })
+
+                Homey.get('apikey', (err, apikey) => {
+                    if (err) return Homey.alert(err)
+                    apiKey.value = apikey
+                })
+
+                Homey.ready()
+            }
+
+            //);
+            
+        </script>
+	</body>
+</html>
