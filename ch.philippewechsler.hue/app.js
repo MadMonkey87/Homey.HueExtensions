@@ -148,6 +148,70 @@ class HueExtensionsApp extends Homey.App {
 								})
 							});
 						});
+
+						let setGroupRelativeHueAction = new Homey.FlowCardAction('set_group_relative_hue');
+						setGroupRelativeHueAction
+							.register()
+							.registerRunListener(async ( args, state ) => {
+								const groupState = { hue_inc : Math.round(args.relative_increasement * 65534) };
+								return new Promise((resolve) => {
+									this.setGroupState(args.group.id, groupState, (error, result) => {
+										if (error) {
+											return this.error(error);
+										}
+										resolve(true);
+									})
+								});
+							})
+							.getArgument('group')
+							.registerAutocompleteListener(( query, args ) => {
+								return new Promise((resolve) => {
+									this.getGroupsList((error, groups) => {
+										if (error) {
+											return this.error(error);
+										}
+										let result = [{ name: 'All lights', id: '0'}];
+										Object.entries(groups).forEach(entry => {
+											const key = entry[0];
+											const group = entry[1];
+											result.push({name: group.name, id: key});
+										});
+										resolve(result);
+									})
+								});
+							});
+		
+							let setLightRelativeHueAction = new Homey.FlowCardAction('set_light_relative_hue');
+							setLightRelativeHueAction
+								.register()
+								.registerRunListener(async ( args, state ) => {
+									const lightState = { sat_inc : Math.round(args.relative_increasement * 65534) };
+									return new Promise((resolve) => {
+										this.setLightState(args.light.id, lightState, (error, result) => {
+											if (error) {
+												return this.error(error);
+											}
+											resolve(true);
+										})
+									});
+								})
+								.getArgument('light')
+								.registerAutocompleteListener(( query, args ) => {
+									return new Promise((resolve) => {
+										this.getLightsList((error, groups) => {
+											if (error) {
+												return this.error(error);
+											}
+											let result = [];
+											Object.entries(groups).forEach(entry => {
+												const key = entry[0];
+												const light = entry[1];
+												result.push({name: light.name,id: key});
+											});
+											resolve(result);
+										})
+									});
+								});
 	}
 
 	getLightState(device, callback) {
