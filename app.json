@@ -21,6 +21,10 @@
   "author": {
     "name": "Philippe Wechsler"
   },
+  "bugs": {
+    "url": "https://github.com/MadMonkey87/Homey.HueExtensions/issues/new"
+  },
+  "source": "https://github.com/MadMonkey87/Homey.HueExtensions",
   "flow": {
     "actions": [
       {

@@ -12,7 +12,6 @@ class HueExtensionsApp extends Homey.App {
 		this.apikey = Homey.ManagerSettings.get('apikey');
 
 		if (!this.host || !this.apikey) {
-			Homey.ManagerSettings.on('set', this.onSettingsChanged.bind(this));
 			return this.log('Go to the app settings page and fill all the fields');
 		}
 
