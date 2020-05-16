@@ -1,5 +1,8 @@
 {
   "1.0.0": {
     "en": "initial release"
+  },
+  "1.0.1": {
+    "en": "fixed a bug that caused the app to crash on startup"
   }
 }
