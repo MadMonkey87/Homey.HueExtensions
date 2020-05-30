@@ -1,0 +1,14 @@
+{
+  "title": {
+    "en": "Set Group Colorloop Inactive"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "group",
+      "placeholder": {
+        "en": "Search for groups..."
+      }
+    }
+  ]
+}

@@ -275,6 +275,70 @@ class HueExtensionsApp extends Homey.App {
 												})
 											});
 										});
+
+										let setGroupColorLoopEnabledAction = new Homey.FlowCardAction('set_group_color_loop_enabled');
+										setGroupColorLoopEnabledAction
+											.register()
+											.registerRunListener(async ( args, state ) => {
+												const groupState = { effect: 'colorloop' };
+												return new Promise((resolve) => {
+													this.setGroupState(args.group.id, groupState, (error, result) => {
+														if (error) {
+															return this.error(error);
+														}
+														resolve(true);
+													})
+												});
+											})
+											.getArgument('group')
+											.registerAutocompleteListener(( query, args ) => {
+												return new Promise((resolve) => {
+													this.getGroupsList((error, groups) => {
+														if (error) {
+															return this.error(error);
+														}
+														let result = [{ name: 'All lights', id: '0'}];
+														Object.entries(groups).forEach(entry => {
+															const key = entry[0];
+															const group = entry[1];
+															result.push({name: group.name, id: key});
+														});
+														resolve(result);
+													})
+												});
+											});
+
+											let setGroupColorLoopDisabledAction = new Homey.FlowCardAction('set_group_color_loop_disabled');
+											setGroupColorLoopDisabledAction
+												.register()
+												.registerRunListener(async ( args, state ) => {
+													const groupState = { effect: 'none' };
+													return new Promise((resolve) => {
+														this.setGroupState(args.group.id, groupState, (error, result) => {
+															if (error) {
+																return this.error(error);
+															}
+															resolve(true);
+														})
+													});
+												})
+												.getArgument('group')
+												.registerAutocompleteListener(( query, args ) => {
+													return new Promise((resolve) => {
+														this.getGroupsList((error, groups) => {
+															if (error) {
+																return this.error(error);
+															}
+															let result = [{ name: 'All lights', id: '0'}];
+															Object.entries(groups).forEach(entry => {
+																const key = entry[0];
+																const group = entry[1];
+																result.push({name: group.name, id: key});
+															});
+															resolve(result);
+														})
+													});
+												});
 	}
 
 	getLightState(device, callback) {
