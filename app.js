@@ -339,6 +339,134 @@ class HueExtensionsApp extends Homey.App {
 														})
 													});
 												});
+
+												let flashGroupAction = new Homey.FlowCardAction('flash_group');
+												flashGroupAction
+													.register()
+													.registerRunListener(async ( args, state ) => {
+														const groupState = { alert: 'select' };
+														return new Promise((resolve) => {
+															this.setGroupState(args.group.id, groupState, (error, result) => {
+																if (error) {
+																	return this.error(error);
+																}
+																resolve(true);
+															})
+														});
+													})
+													.getArgument('group')
+													.registerAutocompleteListener(( query, args ) => {
+														return new Promise((resolve) => {
+															this.getGroupsList((error, groups) => {
+																if (error) {
+																	return this.error(error);
+																}
+																let result = [{ name: 'All lights', id: '0'}];
+																Object.entries(groups).forEach(entry => {
+																	const key = entry[0];
+																	const group = entry[1];
+																	result.push({name: group.name, id: key});
+																});
+																resolve(result);
+															})
+														});
+													});
+
+													let flashGroupStartAction = new Homey.FlowCardAction('flash_group_start');
+													flashGroupStartAction
+														.register()
+														.registerRunListener(async ( args, state ) => {
+															const groupState = { alert: 'lselect' };
+															return new Promise((resolve) => {
+																this.setGroupState(args.group.id, groupState, (error, result) => {
+																	if (error) {
+																		return this.error(error);
+																	}
+																	resolve(true);
+																})
+															});
+														})
+														.getArgument('group')
+														.registerAutocompleteListener(( query, args ) => {
+															return new Promise((resolve) => {
+																this.getGroupsList((error, groups) => {
+																	if (error) {
+																		return this.error(error);
+																	}
+																	let result = [{ name: 'All lights', id: '0'}];
+																	Object.entries(groups).forEach(entry => {
+																		const key = entry[0];
+																		const group = entry[1];
+																		result.push({name: group.name, id: key});
+																	});
+																	resolve(result);
+																})
+															});
+														});
+
+														let flashGroupStopAction = new Homey.FlowCardAction('flash_group_stop');
+														flashGroupStopAction
+															.register()
+															.registerRunListener(async ( args, state ) => {
+																const groupState = { alert: 'none' };
+																return new Promise((resolve) => {
+																	this.setGroupState(args.group.id, groupState, (error, result) => {
+																		if (error) {
+																			return this.error(error);
+																		}
+																		resolve(true);
+																	})
+																});
+															})
+															.getArgument('group')
+															.registerAutocompleteListener(( query, args ) => {
+																return new Promise((resolve) => {
+																	this.getGroupsList((error, groups) => {
+																		if (error) {
+																			return this.error(error);
+																		}
+																		let result = [{ name: 'All lights', id: '0'}];
+																		Object.entries(groups).forEach(entry => {
+																			const key = entry[0];
+																			const group = entry[1];
+																			result.push({name: group.name, id: key});
+																		});
+																		resolve(result);
+																	})
+																});
+															});
+
+															let setGroupAbsoluteCtAction = new Homey.FlowCardAction('set_group_absolute_ct');
+															setGroupAbsoluteCtAction
+																.register()
+																.registerRunListener(async ( args, state ) => {
+																	const groupState = { cr : Math.round(args.ct * 347 + 135), transitiontime : args.transitiontime };
+																	return new Promise((resolve) => {
+																		this.setGroupState(args.group.id, groupState, (error, result) => {
+																			if (error) {
+																				return this.error(error);
+																			}
+																			resolve(true);
+																		})
+																	});
+																})
+																.getArgument('group')
+																.registerAutocompleteListener(( query, args ) => {
+																	return new Promise((resolve) => {
+																		this.getGroupsList((error, groups) => {
+																			if (error) {
+																				return this.error(error);
+																			}
+																			let result = [{ name: 'All lights', id: '0'}];
+																			Object.entries(groups).forEach(entry => {
+																				const key = entry[0];
+																				const group = entry[1];
+																				result.push({name: group.name, id: key});
+																			});
+																			resolve(result);
+																		})
+																	});
+																});
 	}
 
 	getLightState(device, callback) {

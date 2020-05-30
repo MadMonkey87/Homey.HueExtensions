@@ -6,6 +6,6 @@
     "en": "fixed a bug that caused the app to crash on startup"
   },
   "1.1.0": {
-    "en": "action cards now contain a transition time, enable/disable color loop for groups"
+    "en": "action cards now contain a transition time, enable/disable color loop for groups, flash a group, set absolute colortemperature, hue and saturation for groups"
   }
 }

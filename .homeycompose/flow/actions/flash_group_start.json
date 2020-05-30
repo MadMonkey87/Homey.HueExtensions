@@ -1,0 +1,14 @@
+{
+  "title": {
+    "en": "Flash Group Start"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "group",
+      "placeholder": {
+        "en": "Search for groups..."
+      }
+    }
+  ]
+}

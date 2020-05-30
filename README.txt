@@ -8,6 +8,8 @@ Setup instructions
 
 Features
  - increase/decrease relative brightness of lights or groups: allows you to set a brighness increasement or decreasement in %. As this is a native command on the Hue bridge it is super smooth and fast. All lights dim up/down synchronized! Perfect for dimmer switches etc.
- - increase/decrease relative saturation for lights & groups
- - increase/decrease relative hue for lights & groups
- - increase/decrease relative color temperature for lights & groups
+ - increase/decrease relative/absolute saturation for lights & groups
+ - increase/decrease relative/absolute hue for lights & groups
+ - increase/decrease relative/absolute color temperature for lights & groups
+ - enable/disable colorloop effect for groups
+ - flash groups (shortly or with start/stop actions)
