@@ -340,8 +340,8 @@ class HueExtensionsApp extends Homey.App {
 													});
 												});
 
-												let flashGroupAction = new Homey.FlowCardAction('flash_group');
-												flashGroupAction
+												let flashGroupShortAction = new Homey.FlowCardAction('flash_group_short');
+												flashGroupShortAction
 													.register()
 													.registerRunListener(async ( args, state ) => {
 														const groupState = { alert: 'select' };
@@ -372,8 +372,8 @@ class HueExtensionsApp extends Homey.App {
 														});
 													});
 
-													let flashGroupStartAction = new Homey.FlowCardAction('flash_group_start');
-													flashGroupStartAction
+													let flashGroupLongAction = new Homey.FlowCardAction('flash_group_long');
+													flashGroupLongAction
 														.register()
 														.registerRunListener(async ( args, state ) => {
 															const groupState = { alert: 'lselect' };
@@ -404,43 +404,11 @@ class HueExtensionsApp extends Homey.App {
 															});
 														});
 
-														let flashGroupStopAction = new Homey.FlowCardAction('flash_group_stop');
-														flashGroupStopAction
-															.register()
-															.registerRunListener(async ( args, state ) => {
-																const groupState = { alert: 'none' };
-																return new Promise((resolve) => {
-																	this.setGroupState(args.group.id, groupState, (error, result) => {
-																		if (error) {
-																			return this.error(error);
-																		}
-																		resolve(true);
-																	})
-																});
-															})
-															.getArgument('group')
-															.registerAutocompleteListener(( query, args ) => {
-																return new Promise((resolve) => {
-																	this.getGroupsList((error, groups) => {
-																		if (error) {
-																			return this.error(error);
-																		}
-																		let result = [{ name: 'All lights', id: '0'}];
-																		Object.entries(groups).forEach(entry => {
-																			const key = entry[0];
-																			const group = entry[1];
-																			result.push({name: group.name, id: key});
-																		});
-																		resolve(result);
-																	})
-																});
-															});
-
 															let setGroupAbsoluteCtAction = new Homey.FlowCardAction('set_group_absolute_ct');
 															setGroupAbsoluteCtAction
 																.register()
 																.registerRunListener(async ( args, state ) => {
-																	const groupState = { cr : Math.round(args.ct * 347 + 135), transitiontime : args.transitiontime };
+																	const groupState = { ct : Math.round(args.ct * 347 + 135), transitiontime : args.transitiontime };
 																	return new Promise((resolve) => {
 																		this.setGroupState(args.group.id, groupState, (error, result) => {
 																			if (error) {
@@ -500,11 +468,11 @@ class HueExtensionsApp extends Homey.App {
 																		});
 																	});
 
-																	let setGroupAbsoluteHueAction = new Homey.FlowCardAction('set_group_absolute_Hue');
+																	let setGroupAbsoluteHueAction = new Homey.FlowCardAction('set_group_absolute_hue');
 																	setGroupAbsoluteHueAction
 																		.register()
 																		.registerRunListener(async ( args, state ) => {
-																			const groupState = { hue : Math.round((args.hue / 360 - 0.5) * 65535), transitiontime : args.transitiontime };
+																			const groupState = { hue : Math.round(args.hue / 360 * 65535 ), transitiontime : args.transitiontime };
 																			return new Promise((resolve) => {
 																				this.setGroupState(args.group.id, groupState, (error, result) => {
 																					if (error) {
@@ -564,14 +532,14 @@ class HueExtensionsApp extends Homey.App {
 	}
 
 	setGroupState(groupId, state, callback){
-		this.log('set group state', JSON.stringify(state))
+		this.log('set group state', `/api/${this.apikey}/groups/${groupId}/action`, JSON.stringify(state))
 		http.put(this.host, this.port, `/api/${this.apikey}/groups/${groupId}/action`, state, (error, response) => {
 			callback(error, !!error ? null : JSON.parse(response))
 		})
 	}
 
 	setLightState(lightId, state, callback){
-		this.log('set light state', JSON.stringify(state))
+		this.log('set light state', `/api/${this.apikey}/lights/${lightId}/state`, JSON.stringify(state))
 		http.put(this.host, this.port, `/api/${this.apikey}/lights/${lightId}/state`, state, (error, response) => {
 			callback(error, !!error ? null : JSON.parse(response))
 		})

@@ -30,7 +30,7 @@
     "actions": [
       {
         "title": {
-          "en": "Flash Group"
+          "en": "Flash Group (Long)"
         },
         "args": [
           {
@@ -41,7 +41,148 @@
             }
           }
         ],
-        "id": "flash_group"
+        "id": "flash_group_long"
+      },
+      {
+        "title": {
+          "en": "Flash Group (Short)"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "group",
+            "placeholder": {
+              "en": "Search for groups..."
+            }
+          }
+        ],
+        "id": "flash_group_short"
+      },
+      {
+        "title": {
+          "en": "Set Group Absolute Color Temperature"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "group",
+            "placeholder": {
+              "en": "Search for groups..."
+            }
+          },
+          {
+            "type": "range",
+            "name": "ct",
+            "placeholder": {
+              "en": "absolute color temperature"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "range",
+            "name": "transitiontime",
+            "placeholder": {
+              "en": "transition time"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "value": 4,
+            "label": "ms",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_group_absolute_ct"
+      },
+      {
+        "title": {
+          "en": "Set Group Absolute Hue"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "group",
+            "placeholder": {
+              "en": "Search for groups..."
+            }
+          },
+          {
+            "type": "range",
+            "name": "hue",
+            "placeholder": {
+              "en": "absolute hue"
+            },
+            "min": 0,
+            "max": 360,
+            "step": 1,
+            "label": "°",
+            "labelMultiplier": 1,
+            "labelDecimals": 0
+          },
+          {
+            "type": "range",
+            "name": "transitiontime",
+            "placeholder": {
+              "en": "transition time"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "value": 4,
+            "label": "ms",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_group_absolute_hue"
+      },
+      {
+        "title": {
+          "en": "Set Group Absolute Saturation"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "group",
+            "placeholder": {
+              "en": "Search for groups..."
+            }
+          },
+          {
+            "type": "range",
+            "name": "saturation",
+            "placeholder": {
+              "en": "absolute saturation"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "range",
+            "name": "transitiontime",
+            "placeholder": {
+              "en": "transition time"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "value": 4,
+            "label": "ms",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_group_absolute_saturation"
       },
       {
         "title": {
