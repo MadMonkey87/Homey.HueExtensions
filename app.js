@@ -24,7 +24,7 @@ class HueExtensionsApp extends Homey.App {
 		setGroupRelativeBrightnessAction
 			.register()
 			.registerRunListener(async ( args, state ) => {
-				const groupState = { bri_inc : Math.round(args.relative_increasement * 254) };
+				const groupState = { bri_inc : Math.round(args.relative_increasement * 254), transitiontime : args.transitiontime };
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
@@ -56,7 +56,7 @@ class HueExtensionsApp extends Homey.App {
 			setLightRelativeBrightnessAction
 				.register()
 				.registerRunListener(async ( args, state ) => {
-					const lightState = { bri_inc : Math.round(args.relative_increasement * 254) };
+					const lightState = { bri_inc : Math.round(args.relative_increasement * 254), transitiontime : args.transitiontime };
 					return new Promise((resolve) => {
 						this.setLightState(args.light.id, lightState, (error, result) => {
 							if (error) {
@@ -88,7 +88,7 @@ class HueExtensionsApp extends Homey.App {
 				setGroupRelativeSaturationAction
 					.register()
 					.registerRunListener(async ( args, state ) => {
-						const groupState = { sat_inc : Math.round(args.relative_increasement * 254) };
+						const groupState = { sat_inc : Math.round(args.relative_increasement * 254), transitiontime : args.transitiontime };
 						return new Promise((resolve) => {
 							this.setGroupState(args.group.id, groupState, (error, result) => {
 								if (error) {
@@ -120,7 +120,7 @@ class HueExtensionsApp extends Homey.App {
 					setLightRelativeSaturationAction
 						.register()
 						.registerRunListener(async ( args, state ) => {
-							const lightState = { sat_inc : Math.round(args.relative_increasement * 254) };
+							const lightState = { sat_inc : Math.round(args.relative_increasement * 254), transitiontime : args.transitiontime };
 							return new Promise((resolve) => {
 								this.setLightState(args.light.id, lightState, (error, result) => {
 									if (error) {
@@ -152,7 +152,7 @@ class HueExtensionsApp extends Homey.App {
 						setGroupRelativeHueAction
 							.register()
 							.registerRunListener(async ( args, state ) => {
-								const groupState = { hue_inc : Math.round(args.relative_increasement * 65534) };
+								const groupState = { hue_inc : Math.round(args.relative_increasement * 65534), transitiontime : args.transitiontime };
 								return new Promise((resolve) => {
 									this.setGroupState(args.group.id, groupState, (error, result) => {
 										if (error) {
@@ -184,7 +184,7 @@ class HueExtensionsApp extends Homey.App {
 							setLightRelativeHueAction
 								.register()
 								.registerRunListener(async ( args, state ) => {
-									const lightState = { sat_inc : Math.round(args.relative_increasement * 65534) };
+									const lightState = { sat_inc : Math.round(args.relative_increasement * 65534), transitiontime : args.transitiontime };
 									return new Promise((resolve) => {
 										this.setLightState(args.light.id, lightState, (error, result) => {
 											if (error) {
@@ -216,7 +216,7 @@ class HueExtensionsApp extends Homey.App {
 								setGroupRelativeCtAction
 									.register()
 									.registerRunListener(async ( args, state ) => {
-										const groupState = { ct_inc : Math.round(args.relative_increasement * 65534) };
+										const groupState = { ct_inc : Math.round(args.relative_increasement * 65534), transitiontime : args.transitiontime };
 										return new Promise((resolve) => {
 											this.setGroupState(args.group.id, groupState, (error, result) => {
 												if (error) {
@@ -248,7 +248,7 @@ class HueExtensionsApp extends Homey.App {
 									setLightRelativeCtAction
 										.register()
 										.registerRunListener(async ( args, state ) => {
-											const lightState = { ct_inc : Math.round(args.relative_increasement * 65534) };
+											const lightState = { ct_inc : Math.round(args.relative_increasement * 65534), transitiontime : args.transitiontime };
 											return new Promise((resolve) => {
 												this.setLightState(args.light.id, lightState, (error, result) => {
 													if (error) {
@@ -308,12 +308,14 @@ class HueExtensionsApp extends Homey.App {
 	}
 
 	setGroupState(groupId, state, callback){
+		this.log('set group state', JSON.stringify(state))
 		http.put(this.host, this.port, `/api/${this.apikey}/groups/${groupId}/action`, state, (error, response) => {
 			callback(error, !!error ? null : JSON.parse(response))
 		})
 	}
 
 	setLightState(lightId, state, callback){
+		this.log('set light state', JSON.stringify(state))
 		http.put(this.host, this.port, `/api/${this.apikey}/lights/${lightId}/state`, state, (error, response) => {
 			callback(error, !!error ? null : JSON.parse(response))
 		})
