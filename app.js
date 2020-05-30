@@ -472,7 +472,7 @@ class HueExtensionsApp extends Homey.App {
 																setGroupAbsoluteSaturationAction
 																	.register()
 																	.registerRunListener(async ( args, state ) => {
-																		const groupState = { sat : Math.round(args.ct * 254), transitiontime : args.transitiontime };
+																		const groupState = { sat : Math.round(args.saturation * 254), transitiontime : args.transitiontime };
 																		return new Promise((resolve) => {
 																			this.setGroupState(args.group.id, groupState, (error, result) => {
 																				if (error) {
@@ -499,6 +499,38 @@ class HueExtensionsApp extends Homey.App {
 																			})
 																		});
 																	});
+
+																	let setGroupAbsoluteHueAction = new Homey.FlowCardAction('set_group_absolute_Hue');
+																	setGroupAbsoluteHueAction
+																		.register()
+																		.registerRunListener(async ( args, state ) => {
+																			const groupState = { hue : Math.round((args.hue / 360 - 0.5) * 65535), transitiontime : args.transitiontime };
+																			return new Promise((resolve) => {
+																				this.setGroupState(args.group.id, groupState, (error, result) => {
+																					if (error) {
+																						return this.error(error);
+																					}
+																					resolve(true);
+																				})
+																			});
+																		})
+																		.getArgument('group')
+																		.registerAutocompleteListener(( query, args ) => {
+																			return new Promise((resolve) => {
+																				this.getGroupsList((error, groups) => {
+																					if (error) {
+																						return this.error(error);
+																					}
+																					let result = [{ name: 'All lights', id: '0'}];
+																					Object.entries(groups).forEach(entry => {
+																						const key = entry[0];
+																						const group = entry[1];
+																						result.push({name: group.name, id: key});
+																					});
+																					resolve(result);
+																				})
+																			});
+																		});
 	}
 
 	getLightState(device, callback) {

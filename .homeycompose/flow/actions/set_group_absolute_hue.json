@@ -1,0 +1,41 @@
+{
+  "title": {
+    "en": "Set Group Absolute Hue"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "group",
+      "placeholder": {
+        "en": "Search for groups..."
+      }
+    },
+    {
+      "type": "range",
+      "name": "hue",
+      "placeholder": {
+        "en": "absolute hue"
+      },
+      "min": 0,
+      "max": 360,
+      "step": 1,
+      "label": "°",
+      "labelMultiplier": 1,
+      "labelDecimals": 0
+    },
+    {
+      "type": "range",
+      "name": "transitiontime",
+      "placeholder": {
+        "en": "transition time"
+      },
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "value": 4,
+      "label": "ms",
+      "labelMultiplier": 100,
+      "labelDecimals": 0
+    }
+  ]
+}
