@@ -1,0 +1,14 @@
+{
+  "title": {
+    "en": "!{{Are all lights on|Are all lights off}}"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "group",
+      "placeholder": {
+        "en": "Search for groups..."
+      }
+    }
+  ]
+}

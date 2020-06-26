@@ -13,3 +13,4 @@ Features
  - increase/decrease relative/absolute color temperature for lights & groups
  - enable/disable colorloop effect for groups
  - flash groups (shortly or with start/stop actions)
+ - check if all or any light of a group is on

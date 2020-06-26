@@ -27,3 +27,4 @@ This app for [Athom Homey](https://homey.app/en-us/) adds a few extra features m
  - increase/decrease relative/absolute color temperature for lights & groups
  - enable/disable colorloop effect for groups
  - flash groups (shortly or with start/stop actions)
+ - check if all or any light of a group is on

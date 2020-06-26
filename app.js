@@ -16,6 +16,7 @@ class HueExtensionsApp extends Homey.App {
 		}
 
 		this.initializeActions();
+		this.initializeConditions();
 	}
 
 	initializeActions() {
@@ -501,14 +502,86 @@ class HueExtensionsApp extends Homey.App {
 																		});
 	}
 
-	getLightState(device, callback) {
-		http.get(`http://${this.host}/api/${this.apikey}/lights/${device.id}`, (error, response) => {
+	initializeConditions() {
+
+		let anyLightOnCondition = new Homey.FlowCardCondition('any_light_on');
+		anyLightOnCondition
+			.register()
+			.registerRunListener(async ( args, state ) => {
+				return new Promise((resolve) => {
+					this.getGroupState(args.group.id, (error, result) => {
+						if (error) {
+							return this.error(error);
+						}
+						resolve(result.state.any_on);
+					})
+				});
+			})
+			.getArgument('group')
+			.registerAutocompleteListener(( query, args ) => {
+				return new Promise((resolve) => {
+					this.getGroupsList((error, groups) => {
+						if (error) {
+							return this.error(error);
+						}
+						let result = [{ name: 'All lights', id: '0'}];
+						Object.entries(groups).forEach(entry => {
+							const key = entry[0];
+							const group = entry[1];
+							result.push({name: group.name, id: key});
+						});
+						resolve(result);
+					})
+				});
+			});	
+			
+			let allLightsOnCondition = new Homey.FlowCardCondition('all_lights_on');
+			allLightsOnCondition
+				.register()
+				.registerRunListener(async ( args, state ) => {
+					return new Promise((resolve) => {
+						this.getGroupState(args.group.id, (error, result) => {
+							if (error) {
+								return this.error(error);
+							}
+							resolve(result.state.all_on);
+						})
+					});
+				})
+				.getArgument('group')
+				.registerAutocompleteListener(( query, args ) => {
+					return new Promise((resolve) => {
+						this.getGroupsList((error, groups) => {
+							if (error) {
+								return this.error(error);
+							}
+							let result = [{ name: 'All lights', id: '0'}];
+							Object.entries(groups).forEach(entry => {
+								const key = entry[0];
+								const group = entry[1];
+								result.push({name: group.name, id: key});
+							});
+							resolve(result);
+						})
+					});
+				});
+
+	}
+
+	getLightState(deviceId, callback) {
+		http.get(`http://${this.host}/api/${this.apikey}/lights/${deviceId}`, (error, response) => {
 			callback(error, !!error ? null : JSON.parse(response))
 		})
 	}
 
-	getSensorState(device, callback) {
-		http.get(`http://${this.host}/api/${this.apikey}/sensors/${device.id}`, (error, response) => {
+	getSensorState(deviceId, callback) {
+		http.get(`http://${this.host}/api/${this.apikey}/sensors/${deviceId}`, (error, response) => {
+			callback(error, !!error ? null : JSON.parse(response))
+		})
+	}
+
+	getGroupState(deviceId, callback) {
+		http.get(`http://${this.host}/api/${this.apikey}/groups/${deviceId}`, (error, response) => {
 			callback(error, !!error ? null : JSON.parse(response))
 		})
 	}
