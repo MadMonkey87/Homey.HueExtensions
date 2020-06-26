@@ -1,0 +1,32 @@
+{
+  "title": {
+    "en": "Set Group Colormode"
+  },
+  "args": [
+    {
+      "type": "autocomplete",
+      "name": "group",
+      "placeholder": {
+        "en": "Search for groups..."
+      }
+    },
+    {
+      "type": "dropdown",
+      "name": "Colormode",
+      "values": [
+        {
+          "id": "ct",
+          "label": {
+            "en": "Colortemperature"
+          }
+        },
+        {
+          "id": "hs",
+          "label": {
+            "en": "Color (Hue and Saturation)"
+          }
+        }
+      ]
+    }
+  ]
+}

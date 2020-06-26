@@ -10,5 +10,11 @@
   },
   "1.2.0": {
     "en": "condition cards to check if any or all lights are on of a group"
+  },
+  "1.2.1": {
+    "en": "fix for relative color temperature"
+  },
+  "1.3.0": {
+    "en": "action card to set color mode for lights/groups"
   }
 }
