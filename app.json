@@ -1,6 +1,6 @@
 {
   "id": "ch.philippewechsler.hue",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "compatibility": ">=4.0.0",
   "brandColor": "#55626b",
   "sdk": 2,
@@ -260,12 +260,12 @@
           },
           {
             "type": "dropdown",
-            "name": "Colormode",
+            "name": "colormode",
             "values": [
               {
                 "id": "ct",
                 "label": {
-                  "en": "Colortemperature"
+                  "en": "Color temperature"
                 }
               },
               {
@@ -278,6 +278,304 @@
           }
         ],
         "id": "set_group_colormode"
+      },
+      {
+        "title": {
+          "en": "(Advanced) Set Group State"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "group",
+            "placeholder": {
+              "en": "Search for groups..."
+            },
+            "title": {
+              "en": "Group"
+            }
+          },
+          {
+            "type": "dropdown",
+            "name": "power",
+            "title": {
+              "en": "Power mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "on",
+                "label": {
+                  "en": "Turn on"
+                }
+              },
+              {
+                "id": "off",
+                "label": {
+                  "en": "Turn off"
+                }
+              }
+            ]
+          },
+          {
+            "type": "dropdown",
+            "name": "brightness_mode",
+            "title": {
+              "en": "Brightness mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "absolute",
+                "label": {
+                  "en": "absolute"
+                }
+              },
+              {
+                "id": "relative",
+                "label": {
+                  "en": "relative"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "brightness",
+            "title": {
+              "en": "Absolute brightness"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 2
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement_brightness",
+            "title": {
+              "en": "Relative brightness"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "dropdown",
+            "name": "saturation_mode",
+            "title": {
+              "en": "Saturation mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "absolute",
+                "label": {
+                  "en": "absolute"
+                }
+              },
+              {
+                "id": "relative",
+                "label": {
+                  "en": "relative"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "saturation",
+            "title": {
+              "en": "Absolute saturation"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 2
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement_saturation",
+            "title": {
+              "en": "Relative saturation"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "dropdown",
+            "name": "hue_mode",
+            "title": {
+              "en": "Hue mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "absolute",
+                "label": {
+                  "en": "absolute"
+                }
+              },
+              {
+                "id": "relative",
+                "label": {
+                  "en": "relative"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "hue",
+            "title": {
+              "en": "Absolute hue"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "label": "°",
+            "labelMultiplier": 360,
+            "labelDecimals": 2
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement_hue",
+            "title": {
+              "en": "Relative hue"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "dropdown",
+            "name": "ct_mode",
+            "title": {
+              "en": "Color temperature mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "absolute",
+                "label": {
+                  "en": "absolute"
+                }
+              },
+              {
+                "id": "relative",
+                "label": {
+                  "en": "relative"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "ct",
+            "title": {
+              "en": "Absolute color temperature"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 2
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement_ct",
+            "title": {
+              "en": "Relative color temperature"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "dropdown",
+            "name": "colormode",
+            "title": {
+              "en": "Color mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "ct",
+                "label": {
+                  "en": "Color temperature"
+                }
+              },
+              {
+                "id": "hs",
+                "label": {
+                  "en": "Color (Hue and Saturation)"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "transitiontime",
+            "title": {
+              "en": "Transition time"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "value": 4,
+            "label": "ms",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_group_combined"
       },
       {
         "title": {
@@ -461,7 +759,7 @@
           },
           {
             "type": "dropdown",
-            "name": "Colormode",
+            "name": "colormode",
             "values": [
               {
                 "id": "ct",
@@ -479,6 +777,304 @@
           }
         ],
         "id": "set_light_colormode"
+      },
+      {
+        "title": {
+          "en": "(Advanced) Set Light State"
+        },
+        "args": [
+          {
+            "type": "autocomplete",
+            "name": "light",
+            "placeholder": {
+              "en": "Search for lights..."
+            },
+            "title": {
+              "en": "Light"
+            }
+          },
+          {
+            "type": "dropdown",
+            "name": "power",
+            "title": {
+              "en": "Power mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "on",
+                "label": {
+                  "en": "Turn on"
+                }
+              },
+              {
+                "id": "off",
+                "label": {
+                  "en": "Turn off"
+                }
+              }
+            ]
+          },
+          {
+            "type": "dropdown",
+            "name": "brightness_mode",
+            "title": {
+              "en": "Brightness mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "absolute",
+                "label": {
+                  "en": "absolute"
+                }
+              },
+              {
+                "id": "relative",
+                "label": {
+                  "en": "relative"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "brightness",
+            "title": {
+              "en": "Absolute brightness"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 2
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement_brightness",
+            "title": {
+              "en": "Relative brightness"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "dropdown",
+            "name": "saturation_mode",
+            "title": {
+              "en": "Saturation mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "absolute",
+                "label": {
+                  "en": "absolute"
+                }
+              },
+              {
+                "id": "relative",
+                "label": {
+                  "en": "relative"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "saturation",
+            "title": {
+              "en": "Absolute saturation"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 2
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement_saturation",
+            "title": {
+              "en": "Relative saturation"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "dropdown",
+            "name": "hue_mode",
+            "title": {
+              "en": "Hue mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "absolute",
+                "label": {
+                  "en": "absolute"
+                }
+              },
+              {
+                "id": "relative",
+                "label": {
+                  "en": "relative"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "hue",
+            "title": {
+              "en": "Absolute hue"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "label": "°",
+            "labelMultiplier": 360,
+            "labelDecimals": 2
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement_hue",
+            "title": {
+              "en": "Relative hue"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "dropdown",
+            "name": "ct_mode",
+            "title": {
+              "en": "Color temperature mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "absolute",
+                "label": {
+                  "en": "absolute"
+                }
+              },
+              {
+                "id": "relative",
+                "label": {
+                  "en": "relative"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "ct",
+            "title": {
+              "en": "Absolute color temperature"
+            },
+            "min": 0,
+            "max": 1,
+            "step": 0.005,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 2
+          },
+          {
+            "type": "range",
+            "name": "relative_increasement_ct",
+            "title": {
+              "en": "Relative color temperature"
+            },
+            "min": -1,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          },
+          {
+            "type": "dropdown",
+            "name": "colormode",
+            "title": {
+              "en": "Color mode"
+            },
+            "values": [
+              {
+                "id": "none",
+                "label": {
+                  "en": "Do not set"
+                }
+              },
+              {
+                "id": "ct",
+                "label": {
+                  "en": "Color temperature"
+                }
+              },
+              {
+                "id": "hs",
+                "label": {
+                  "en": "Color (Hue and Saturation)"
+                }
+              }
+            ]
+          },
+          {
+            "type": "range",
+            "name": "transitiontime",
+            "title": {
+              "en": "Transition time"
+            },
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "value": 4,
+            "label": "ms",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ],
+        "id": "set_light_combined"
       },
       {
         "title": {

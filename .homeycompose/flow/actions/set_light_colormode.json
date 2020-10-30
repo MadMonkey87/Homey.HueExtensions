@@ -12,7 +12,7 @@
     },
     {
       "type": "dropdown",
-      "name": "Colormode",
+      "name": "colormode",
       "values": [
         {
           "id": "ct",

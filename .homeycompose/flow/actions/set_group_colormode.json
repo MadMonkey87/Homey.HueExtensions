@@ -12,12 +12,12 @@
     },
     {
       "type": "dropdown",
-      "name": "Colormode",
+      "name": "colormode",
       "values": [
         {
           "id": "ct",
           "label": {
-            "en": "Colortemperature"
+            "en": "Color temperature"
           }
         },
         {

@@ -4,7 +4,7 @@ Adds a few extra features missing in the official Hue app.
 
 This app for [Athom Homey](https://homey.app/en-us/) adds a few extra features missing in the official Hue app.
 
-[![current version](https://img.shields.io/badge/version-1.3.0-<COLOR>.svg)](https://shields.io/)
+[![current version](https://img.shields.io/badge/version-1.4.0-<COLOR>.svg)](https://shields.io/)
 
 # Build and Install
 
