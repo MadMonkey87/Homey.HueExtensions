@@ -1,6 +1,6 @@
 {
   "id": "ch.philippewechsler.hue",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "compatibility": ">=4.0.0",
   "brandColor": "#55626b",
   "sdk": 2,

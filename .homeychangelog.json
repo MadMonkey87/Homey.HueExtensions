@@ -19,5 +19,8 @@
   },
   "1.4.0": {
     "en": "new action cards that can set multiple state changes at once (groups and lights)"
+  },
+  "1.4.1": {
+    "en": "small fix for the color temperature"
   }
 }

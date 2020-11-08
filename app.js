@@ -25,8 +25,10 @@ class HueExtensionsApp extends Homey.App {
 		setGroupCombinedAction
 			.register()
 			.registerRunListener(async (args, state) => {
+				this.log(args)
 
 				const groupState = { transitiontime: args.transitiontime };
+
 
 				if (args.power === 'on') {
 					groupState.on = true;
@@ -59,7 +61,7 @@ class HueExtensionsApp extends Homey.App {
 				}
 
 				if (args.ct_mode === 'absolute') {
-					groupState.ct = Math.round(args.hue * 347)
+					groupState.ct = Math.round(args.ct * 347 + 153)
 				} else if (args.ct_mode === 'relative') {
 					groupState.ct_inc = Math.round(args.relative_increasement_ct * 347)
 				}
@@ -68,12 +70,15 @@ class HueExtensionsApp extends Homey.App {
 					groupState.colormode = args.colormode
 				}
 
+				this.log(args.group.id)
+
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
+							this.log(error)
 							return this.error(error);
 						}
-						resolve(true);
+						resolve();
 					})
 				});
 			})
@@ -133,7 +138,7 @@ class HueExtensionsApp extends Homey.App {
 				}
 
 				if (args.ct_mode === 'absolute') {
-					lightState.ct = Math.round(args.hue * 347)
+					lightState.ct = Math.round(args.ct * 347 + 153)
 				} else if (args.ct_mode === 'relative') {
 					lightState.ct_inc = Math.round(args.relative_increasement_ct * 347)
 				}
