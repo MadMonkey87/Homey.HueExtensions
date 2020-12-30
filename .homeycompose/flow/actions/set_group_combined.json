@@ -3,7 +3,7 @@
     "en": "(Advanced) Set Group State"
   },
   "titleFormatted": {
-    "en": "Set state of '[[group]]'\npower: [[power]]\nbrightness: [[brightness_mode]]\nsaturation: [[saturation_mode]]\nhue: [[hue_mode]]\ncolor temperature: [[ct_mode]]\ncolor mode: [[colormode]]"
+    "en": "Set state of [[group]]\npower: [[power]]\nbrightness: [[brightness_mode]]\nsaturation: [[saturation_mode]]\nhue: [[hue_mode]]\ncolor temperature: [[ct_mode]]\ncolor mode: [[colormode]]"
   },
   "hint": {
     "en": "Whenever you want to send multiple commands you should use this card as it natively send them as batch which is always faster and smooter than doing so separatly."
