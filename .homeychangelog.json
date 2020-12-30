@@ -24,6 +24,6 @@
     "en": "small fix for the color temperature"
   },
   "1.4.2": {
-    "en": "improved error handling"
+    "en": "improved error handling, provided some more textual hints"
   }
 }
