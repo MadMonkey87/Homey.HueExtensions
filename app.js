@@ -29,7 +29,6 @@ class HueExtensionsApp extends Homey.App {
 
 				const groupState = { transitiontime: args.transitiontime };
 
-
 				if (args.power === 'on') {
 					groupState.on = true;
 				} else if (args.power === 'off') {
@@ -70,15 +69,14 @@ class HueExtensionsApp extends Homey.App {
 					groupState.colormode = args.colormode
 				}
 
-				this.log(args.group.id)
-
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
 							this.log(error)
-							return this.error(error);
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve();
 					})
 				});
 			})
@@ -150,9 +148,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setLightState(args.light.id, lightState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -182,9 +182,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -214,9 +216,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -246,9 +250,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setLightState(args.light.id, lightState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -278,9 +284,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setLightState(args.light.id, lightState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -310,9 +318,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -342,9 +352,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setLightState(args.light.id, lightState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -374,9 +386,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -406,9 +420,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setLightState(args.light.id, lightState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -438,9 +454,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -470,9 +488,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setLightState(args.light.id, lightState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -502,9 +522,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -534,9 +556,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -566,9 +590,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -598,9 +624,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -630,9 +658,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -662,9 +692,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
@@ -694,9 +726,11 @@ class HueExtensionsApp extends Homey.App {
 				return new Promise((resolve) => {
 					this.setGroupState(args.group.id, groupState, (error, result) => {
 						if (error) {
-							return this.error(error);
+							this.log(error)
+							resolve(false)
+						} else {
+							resolve(true)
 						}
-						resolve(true);
 					})
 				});
 			})
