@@ -25,5 +25,8 @@
   },
   "1.4.2": {
     "en": "improved error handling, provided some more textual hints"
+  },
+  "1.4.3": {
+    "en": "further fixes"
   }
 }

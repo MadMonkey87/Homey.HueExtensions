@@ -2,6 +2,9 @@
   "title": {
     "en": "Flash Group (Long)"
   },
+  "titleFormatted": {
+    "en": "Flash [[group]] (long)"
+  },
   "args": [
     {
       "type": "autocomplete",

@@ -2,6 +2,9 @@
   "title": {
     "en": "Set Group Absolute Color Temperature"
   },
+  "titleFormatted": {
+    "en": "Set color temperature of [[group]] to [[ct]] within [[transitiontime]]"
+  },
   "args": [
     {
       "type": "autocomplete",

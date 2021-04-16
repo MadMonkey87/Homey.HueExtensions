@@ -2,6 +2,9 @@
   "title": {
     "en": "Set Group Colorloop Inactive"
   },
+  "titleFormatted": {
+    "en": "Disable color loop effect of [[group]]"
+  },
   "args": [
     {
       "type": "autocomplete",

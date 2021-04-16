@@ -2,6 +2,9 @@
   "title": {
     "en": "!{{Are all lights on|Are all lights off}}"
   },
+  "titleFormatted": {
+    "en": "When all lights of [[group]] are !{{on|off}}"
+  },
   "args": [
     {
       "type": "autocomplete",

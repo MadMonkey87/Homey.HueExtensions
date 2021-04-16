@@ -43,19 +43,19 @@ class HueExtensionsApp extends Homey.App {
 
 				if (args.saturation_mode === 'absolute') {
 					groupState.sat = Math.round(args.saturation * 254)
-				} else if (args.brightness_mode === 'relative') {
+				} else if (args.saturation_mode === 'relative') {
 					groupState.sat_inc = Math.round(args.relative_increasement_saturation * 254)
 				}
 
 				if (args.hue_mode === 'absolute') {
 					groupState.hue = Math.round(args.hue * 65534)
-				} else if (args.brightness_mode === 'relative') {
+				} else if (args.hue_mode === 'relative') {
 					groupState.hue_inc = Math.round(args.relative_increasement_hue * 65534)
 				}
 
 				if (args.hue_mode === 'absolute') {
 					groupState.hue = Math.round(args.hue * 65534)
-				} else if (args.brightness_mode === 'relative') {
+				} else if (args.hue_mode === 'relative') {
 					groupState.hue_inc = Math.round(args.relative_increasement_hue * 65534)
 				}
 
@@ -119,19 +119,19 @@ class HueExtensionsApp extends Homey.App {
 
 				if (args.saturation_mode === 'absolute') {
 					lightState.sat = Math.round(args.saturation * 254)
-				} else if (args.brightness_mode === 'relative') {
+				} else if (args.saturation_mode === 'relative') {
 					lightState.sat_inc = Math.round(args.relative_increasement_saturation * 254)
 				}
 
 				if (args.hue_mode === 'absolute') {
 					lightState.hue = Math.round(args.hue * 65534)
-				} else if (args.brightness_mode === 'relative') {
+				} else if (args.hue_mode === 'relative') {
 					lightState.hue_inc = Math.round(args.relative_increasement_hue * 65534)
 				}
 
 				if (args.hue_mode === 'absolute') {
 					lightState.hue = Math.round(args.hue * 65534)
-				} else if (args.brightness_mode === 'relative') {
+				} else if (args.hue_mode === 'relative') {
 					lightState.hue_inc = Math.round(args.relative_increasement_hue * 65534)
 				}
 

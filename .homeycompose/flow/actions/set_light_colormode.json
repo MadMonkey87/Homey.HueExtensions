@@ -2,6 +2,9 @@
   "title": {
     "en": "Set Group Colormode"
   },
+  "titleFormatted": {
+    "en": "Set color mode of [[light]] to [[colormode]]"
+  },
   "args": [
     {
       "type": "autocomplete",

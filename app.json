@@ -1,6 +1,6 @@
 {
   "id": "ch.philippewechsler.hue",
-  "version": "1.4.2",
+  "version": "1.5.1",
   "compatibility": ">=4.0.0",
   "brandColor": "#55626b",
   "sdk": 2,
@@ -32,6 +32,9 @@
         "title": {
           "en": "!{{Are all lights on|Are all lights off}}"
         },
+        "titleFormatted": {
+          "en": "When all lights of [[group]] are !{{on|off}}"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -46,6 +49,9 @@
       {
         "title": {
           "en": "!{{Is any light on|Is any light off}}"
+        },
+        "titleFormatted": {
+          "en": "When any lights of [[group]] is !{{on|off}}"
         },
         "args": [
           {
@@ -64,6 +70,9 @@
         "title": {
           "en": "Flash Group (Long)"
         },
+        "titleFormatted": {
+          "en": "Flash [[group]] (long)"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -79,6 +88,9 @@
         "title": {
           "en": "Flash Group (Short)"
         },
+        "titleFormatted": {
+          "en": "Flash [[group]] (short)"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -93,6 +105,9 @@
       {
         "title": {
           "en": "Set Group Absolute Color Temperature"
+        },
+        "titleFormatted": {
+          "en": "Set color temperature of [[group]] to [[ct]] within [[transitiontime]]"
         },
         "args": [
           {
@@ -136,6 +151,9 @@
         "title": {
           "en": "Set Group Absolute Hue"
         },
+        "titleFormatted": {
+          "en": "Set hue of [[group]] to [[hue]] within [[transitiontime]]"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -177,6 +195,9 @@
       {
         "title": {
           "en": "Set Group Absolute Saturation"
+        },
+        "titleFormatted": {
+          "en": "Set saturation of [[group]] to [[saturation]] within [[transitiontime]]"
         },
         "args": [
           {
@@ -220,6 +241,9 @@
         "title": {
           "en": "Set Group Colorloop Inactive"
         },
+        "titleFormatted": {
+          "en": "Disable color loop effect of [[group]]"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -235,6 +259,9 @@
         "title": {
           "en": "Set Group Colorloop Active"
         },
+        "titleFormatted": {
+          "en": "Enable color loop effect of [[group]]"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -249,6 +276,9 @@
       {
         "title": {
           "en": "Set Group Colormode"
+        },
+        "titleFormatted": {
+          "en": "Set color mode of [[group]] to [[colormode]]"
         },
         "args": [
           {
@@ -283,11 +313,11 @@
         "title": {
           "en": "(Advanced) Set Group State"
         },
-        "titleFormatted": {
-          "en": "Set state of [[group]]\npower: [[power]]\nbrightness: [[brightness_mode]]\nsaturation: [[saturation_mode]]\nhue: [[hue_mode]]\ncolor temperature: [[ct_mode]]\ncolor mode: [[colormode]]"
-        },
         "hint": {
           "en": "Whenever you want to send multiple commands you should use this card as it natively send them as batch which is always faster and smooter than doing so separatly."
+        },
+        "titleFormatted": {
+          "en": "Set combined state of [[group]]: power: [[power]], brightness: [[brightness_mode]]->([[brightness]]/[[relative_increasement_brightness]]), saturation: [[saturation_mode]] -> ([[saturation]]/[[relative_increasement_saturation]]), hue: [[hue_mode]] -> ([[hue]]/[[relative_increasement_hue]]), color temperature: [[ct_mode]] -> ([[ct]]/[[relative_increasement_ct]]), color mode: [[colormode]] within [[transitiontime]]"
         },
         "args": [
           {
@@ -587,6 +617,9 @@
         "title": {
           "en": "Set Group Relative Brightness"
         },
+        "titleFormatted": {
+          "en": "Set relative brightness of [[group]] to [[relative_increasement]] within [[transitiontime]]"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -628,6 +661,9 @@
       {
         "title": {
           "en": "Set Group Relative Color Temperature"
+        },
+        "titleFormatted": {
+          "en": "Set relative color temperature of [[group]] to [[relative_increasement]] within [[transitiontime]]"
         },
         "args": [
           {
@@ -671,6 +707,9 @@
         "title": {
           "en": "Set Group Relative Hue"
         },
+        "titleFormatted": {
+          "en": "Set relative hue of [[group]] to [[relative_increasement]] within [[transitiontime]]"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -712,6 +751,9 @@
       {
         "title": {
           "en": "Set Group Relative Saturation"
+        },
+        "titleFormatted": {
+          "en": "Set relative saturation of [[group]] to [[relative_increasement]] within [[transitiontime]]"
         },
         "args": [
           {
@@ -755,6 +797,9 @@
         "title": {
           "en": "Set Group Colormode"
         },
+        "titleFormatted": {
+          "en": "Set color mode of [[light]] to [[colormode]]"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -788,11 +833,11 @@
         "title": {
           "en": "(Advanced) Set Light State"
         },
-        "titleFormatted": {
-          "en": "Set state of [[light]]\npower: [[power]]\nbrightness: [[brightness_mode]]\nsaturation: [[saturation_mode]]\nhue: [[hue_mode]]\ncolor temperature: [[ct_mode]]\ncolor mode: [[colormode]]"
-        },
         "hint": {
           "en": "Whenever you want to send multiple commands you should use this card as it natively send them as batch which is always faster and smooter than doing so separatly."
+        },
+        "titleFormatted": {
+          "en": "Set combined state of [[light]]: power: [[power]], brightness: [[brightness_mode]]->([[brightness]]/[[relative_increasement_brightness]]), saturation: [[saturation_mode]] -> ([[saturation]]/[[relative_increasement_saturation]]), hue: [[hue_mode]] -> ([[hue]]/[[relative_increasement_hue]]), color temperature: [[ct_mode]] -> ([[ct]]/[[relative_increasement_ct]]), color mode: [[colormode]] within [[transitiontime]]"
         },
         "args": [
           {
@@ -1092,6 +1137,9 @@
         "title": {
           "en": "Set Light Relative Brightness"
         },
+        "titleFormatted": {
+          "en": "Set relative brightness of [[light]] to [[relative_increasement]] within [[transitiontime]]"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -1133,6 +1181,9 @@
       {
         "title": {
           "en": "Set Light Relative Color Temperature"
+        },
+        "titleFormatted": {
+          "en": "Set relative color temperature of [[light]] to [[relative_increasement]] within [[transitiontime]]"
         },
         "args": [
           {
@@ -1176,6 +1227,9 @@
         "title": {
           "en": "Set Light Relative Hue"
         },
+        "titleFormatted": {
+          "en": "Set relative hue of [[light]] to [[relative_increasement]] within [[transitiontime]]"
+        },
         "args": [
           {
             "type": "autocomplete",
@@ -1217,6 +1271,9 @@
       {
         "title": {
           "en": "Set Light Relative Saturation"
+        },
+        "titleFormatted": {
+          "en": "Set relative saturation of [[light]] to [[relative_increasement]] within [[transitiontime]]"
         },
         "args": [
           {

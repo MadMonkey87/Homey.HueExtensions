@@ -2,6 +2,9 @@
   "title": {
     "en": "Set Light Relative Hue"
   },
+  "titleFormatted": {
+    "en": "Set relative hue of [[light]] to [[relative_increasement]] within [[transitiontime]]"
+  },
   "args": [
     {
       "type": "autocomplete",

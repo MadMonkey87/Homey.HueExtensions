@@ -2,6 +2,9 @@
   "title": {
     "en": "Set Light Relative Brightness"
   },
+  "titleFormatted": {
+    "en": "Set relative brightness of [[light]] to [[relative_increasement]] within [[transitiontime]]"
+  },
   "args": [
     {
       "type": "autocomplete",

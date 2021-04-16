@@ -2,6 +2,9 @@
   "title": {
     "en": "Set Light Relative Saturation"
   },
+  "titleFormatted": {
+    "en": "Set relative saturation of [[light]] to [[relative_increasement]] within [[transitiontime]]"
+  },
   "args": [
     {
       "type": "autocomplete",

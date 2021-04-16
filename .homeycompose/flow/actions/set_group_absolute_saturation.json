@@ -2,6 +2,9 @@
   "title": {
     "en": "Set Group Absolute Saturation"
   },
+  "titleFormatted": {
+    "en": "Set saturation of [[group]] to [[saturation]] within [[transitiontime]]"
+  },
   "args": [
     {
       "type": "autocomplete",

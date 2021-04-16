@@ -2,6 +2,9 @@
   "title": {
     "en": "Set Group Relative Hue"
   },
+  "titleFormatted": {
+    "en": "Set relative hue of [[group]] to [[relative_increasement]] within [[transitiontime]]"
+  },
   "args": [
     {
       "type": "autocomplete",
