@@ -91,7 +91,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -167,7 +170,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const light = entry[1];
-							result.push({ name: light.name, id: key });
+
+							if (!query || light.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: light.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -201,7 +207,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -235,7 +244,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -269,7 +281,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const light = entry[1];
-							result.push({ name: light.name, id: key });
+
+							if (!query || light.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: light.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -303,7 +318,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const light = entry[1];
-							result.push({ name: light.name, id: key });
+
+							if (!query || light.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: light.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -337,7 +355,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -371,7 +392,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const light = entry[1];
-							result.push({ name: light.name, id: key });
+
+							if (!query || light.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: light.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -405,7 +429,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -439,7 +466,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const light = entry[1];
-							result.push({ name: light.name, id: key });
+
+							if (!query || light.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: light.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -473,7 +503,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -507,7 +540,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const light = entry[1];
-							result.push({ name: light.name, id: key });
+
+							if (!query || light.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: light.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -541,7 +577,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -575,7 +614,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -609,7 +651,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -643,7 +688,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -677,7 +725,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -711,7 +762,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -745,7 +799,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -779,7 +836,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})
@@ -810,7 +870,10 @@ class HueExtensionsApp extends Homey.App {
 						Object.entries(groups).forEach(entry => {
 							const key = entry[0];
 							const group = entry[1];
-							result.push({ name: group.name, id: key });
+
+							if (!query || group.name.toLowerCase().includes(query.toLowerCase())) {
+								result.push({ name: group.name, id: key });
+							}
 						});
 						resolve(result);
 					})

@@ -28,5 +28,11 @@
   },
   "1.4.3": {
     "en": "further fixes"
+  },
+  "1.5.0": {
+    "en": "improved cards, UI improvements"
+  },
+  "1.5.1": {
+    "en": "fixed a bug where some drop downs would not work"
   }
 }
